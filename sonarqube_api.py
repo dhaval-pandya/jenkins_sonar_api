@@ -53,7 +53,7 @@ def copy_quality_profile(profile_id, profile_name):
 	url = DEFAULT_HOST + ':' + DEFAULT_PORT+ '/api/qualitygates/copy'
 	data  = {'id':profile_id,'name':profile_name}
 	response = requests.post(url, data=data, auth=('admin', 'admin'))
-
+	print(response.json())
 	if response.status_code != 200:
 	    # This means something went wrong.
 	    raise ApiError('POST /api/qualitygates/copy {}'.format(response.status_code))
