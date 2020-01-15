@@ -38,12 +38,11 @@ def copy_profile(profile_id, profile_name):
 	    raise ApiError('POST /api/qualityprofiles/copy {}'.format(response.status_code))
 	print('Copied Profile from : {} to {}'.format(profile_id,response.json()["name"]))
 	return response
-def create_quality_profile(profile_name,language):
+def create_quality_profile(profile_name):
 	url = DEFAULT_HOST + ':' + DEFAULT_PORT+ '/api/qualitygates/create'
 	data  = {'name':profile_name}
 	response = requests.post(url, data=data, auth=('admin', 'admin'))
 
-	##resp = requests.get('http://localhost:9000/api/qualitygates/list')
 	if response.status_code != 200:
 	    # This means something went wrong.
 	    raise ApiError('POST /api/qualitygates/create/ {}'.format(response.status_code))
