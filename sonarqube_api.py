@@ -47,7 +47,7 @@ def create_quality_profile(profile_name):
 	if response.status_code != 200:
 	    # This means something went wrong.
 	    raise ApiError('POST /api/qualitygates/create/ {}'.format(response.status_code))
-	print('Created Profile. ID: {}'.format(response.json()["profile"]["key"]))
+	print('Created Quality Profile. ID: {}'.format(response.json()["id"]))
 	return response
 def copy_quality_profile(profile_id, profile_name):
 	url = DEFAULT_HOST + ':' + DEFAULT_PORT+ '/api/qualitygates/copy'
@@ -57,7 +57,7 @@ def copy_quality_profile(profile_id, profile_name):
 	if response.status_code != 200:
 	    # This means something went wrong.
 	    raise ApiError('POST /api/qualitygates/copy {}'.format(response.status_code))
-	print('Created Profile. ID: {}'.format(response.json()["profile"]["key"]))
+	print('Copied Profile. ID: {}'.format(response.json()["id"]))
 def create_group(groupname):
 	url = DEFAULT_HOST + ':' + DEFAULT_PORT+ '/api/user_groups/create'
 	data  = { 'name': groupname}
